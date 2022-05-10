@@ -4,9 +4,12 @@ import {IconContext} from 'react-icons/lib'
 import {animateScroll as scroll} from 'react-scroll';
 import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink} from './NavbarElements'
 
+//components
+import SignupModal from '../ui/signupmodal';
 
 const Navbar = ({toggle}) => {
     const [scrollNav, setScrollNav] = useState(false)
+    const [isOpenModal, setIsOpenModal] = useState(false)
 
     const changeNav = () => {
         if(window.scrollY >= 80){
@@ -15,6 +18,10 @@ const Navbar = ({toggle}) => {
             setScrollNav(false);
         }
     };
+
+    const handleSignInNavBar = (e) => {
+        setIsOpenModal(!isOpenModal)
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', changeNav);
@@ -65,13 +72,14 @@ const Navbar = ({toggle}) => {
                 </NavItem>
             </NavMenu>
             <NavBtn>
-                <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                <NavBtnLink to="#" onClick={handleSignInNavBar}>Sign In</NavBtnLink>
                 <NavBtnLink to="/signup">Sign Up</NavBtnLink>
             </NavBtn>
 
         </NavbarContainer>
     </Nav>
     </IconContext.Provider>
+    <SignupModal isOpen={isOpenModal} changeIsOpen={setIsOpenModal}/>
    </>
   )
 }
