@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button} from '../ButtonElements';
 import { InfoContainer, InfoWrapper, InfoRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, ImgWrap, Img } from './InfoElements';
-
+import SignupModal from '../ui/signupmodal';
 
 const InfoSection = props => {
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
+    const handleSignInNavBar = (e) => {
+        setIsOpenModal(!isOpenModal)
+    }
+
   return (
     <>
         <InfoContainer lightBg={props.lightBg} id={props.id}>
@@ -15,12 +21,13 @@ const InfoSection = props => {
                             <Heading lightText={props.lightText}>{props.headline}</Heading>
                             <Subtitle darkText={props.darkText}>{props.description}</Subtitle>
                             <BtnWrap>
-                                <Button to='/home'
+                                <Button to='#'
                                 smooth={true}
                                 duration={500}
                                 spy={true}
                                 exact="true"
                                 offset={-80}
+                                onClick={handleSignInNavBar}
                                 primary={props.primary ? 1 : 0}
                                 dark={props.dark ? 1 : 0}
                                 dark2={props.dark2 ? 1 : 0}
@@ -35,6 +42,8 @@ const InfoSection = props => {
                     </Column2>
                 </InfoRow>
             </InfoWrapper>
+
+            <SignupModal isOpen={isOpenModal} changeIsOpen={setIsOpenModal}/>
         </InfoContainer>
     </>
   )
