@@ -54,7 +54,7 @@ export const FormContent = styled.div`
     }
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
     background: #010101;
     max-width: 400px;
     height: auto;
@@ -68,6 +68,16 @@ export const Form = styled.form`
 
     @media screen and (max-width: 400px){
         padding: 32px 32px;
+    }
+
+    button {
+        background: #01bf71;
+        padding: 16px 0;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
     }
 `;
 
